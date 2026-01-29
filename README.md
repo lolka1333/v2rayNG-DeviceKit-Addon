@@ -61,6 +61,41 @@ SettingsUi.install(this)
 
 `SettingsUi.install()` appends `pref_devicekit.xml` to the existing `PreferenceScreen`, installs summary providers (so values are visible without clicking) and then calls `UiBinder.bind()`.
 
+## v2rayNG code changes (required)
+
+This library is not only UI: it also needs to be applied to subscription HTTP requests.
+
+### HttpUtil.kt
+
+In `app/src/main/java/com/v2ray/ang/util/HttpUtil.kt`:
+
+1) Decrypt Happ-style subscription URLs before opening connection:
+
+```kotlin
+val effectiveUrl = Compat.decryptSubscriptionUrl(currentUrl) ?: currentUrl
+val conn = createProxyConnection(effectiveUrl, httpPort, timeout, timeout) ?: continue
+```
+
+2) Apply DeviceKit headers from settings to the request:
+
+```kotlin
+Kit.applyToConnectionFromSettings(
+    conn = conn,
+    context = com.v2ray.ang.AngApplication.application,
+    subscriptionUserAgent = userAgent,
+    defaultUserAgent = "v2rayNG/${BuildConfig.VERSION_NAME}",
+    appVersionName = BuildConfig.VERSION_NAME,
+)
+```
+
+### Other integration points
+
+- If you accept multiline subscriptions/links in text fields, use:
+
+```kotlin
+val expanded = Compat.expandHappLinksInText(text)
+```
+
 ## API usage
 
 ### Decrypt subscription URL (single URL)
