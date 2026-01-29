@@ -16,10 +16,10 @@ object SettingsUi {
 
     private fun installSummaryProviders(fragment: PreferenceFragmentCompat) {
         val listKeys = listOf(
-            PrefKeys.OS,
-            PrefKeys.USER_AGENT_PRESET,
-            PrefKeys.V2RAYTUN_PLATFORM,
-            PrefKeys.FLCLASHX_PLATFORM,
+            PrefKeys.HWID_OS,
+            PrefKeys.UA_PRESET,
+            PrefKeys.UA_V2RAYTUN_PLATFORM,
+            PrefKeys.UA_FLCLASHX_PLATFORM,
         )
 
         for (key in listKeys) {
@@ -28,14 +28,14 @@ object SettingsUi {
         }
 
         val editKeys = listOf(
-            PrefKeys.HWID,
-            PrefKeys.OS_VER,
-            PrefKeys.MODEL,
-            PrefKeys.LOCALE,
-            PrefKeys.USER_AGENT_HAPP_VERSION,
-            PrefKeys.USER_AGENT_V2RAYNG_VERSION,
-            PrefKeys.USER_AGENT_FLCLASHX_VERSION,
-            PrefKeys.USER_AGENT,
+            PrefKeys.HWID_VAL,
+            PrefKeys.HWID_OS_VER,
+            PrefKeys.HWID_MODEL,
+            PrefKeys.HWID_LOCALE,
+            PrefKeys.UA_HAPP_VERSION,
+            PrefKeys.UA_V2RAYNG_VERSION,
+            PrefKeys.UA_FLCLASHX_VERSION,
+            PrefKeys.UA_CUSTOM,
         )
 
         for (key in editKeys) {
