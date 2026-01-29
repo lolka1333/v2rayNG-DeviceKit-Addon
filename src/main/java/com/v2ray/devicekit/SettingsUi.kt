@@ -2,12 +2,28 @@ package com.v2ray.devicekit
 
 import androidx.preference.EditTextPreference
 import androidx.preference.ListPreference
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 
 object SettingsUi {
 
     fun install(fragment: PreferenceFragmentCompat) {
-        fragment.addPreferencesFromResource(R.xml.pref_devicekit)
+        val screen = fragment.preferenceScreen
+            ?: fragment.preferenceManager.createPreferenceScreen(fragment.requireContext()).also {
+                fragment.preferenceScreen = it
+            }
+
+        val inflatedOk = runCatching {
+            fragment.preferenceManager.inflateFromResource(
+                fragment.requireContext(),
+                R.xml.pref_devicekit,
+                screen,
+            )
+        }.isSuccess
+
+        if (!inflatedOk) {
+            runCatching { fragment.addPreferencesFromResource(R.xml.pref_devicekit) }
+        }
 
         installSummaryProviders(fragment)
 
