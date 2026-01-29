@@ -13,6 +13,19 @@ This repo is intended to be used as a git submodule inside the v2rayNG repo.
 
 ### 1) Add as a git submodule
 
+From the root of your `v2rayNG` repository:
+
+```bash
+git submodule add https://github.com/lolka1333/v2rayNG-DeviceKit-Addon.git V2rayNG/devicekit
+git submodule update --init --recursive
+```
+
+To update later:
+
+```bash
+git submodule update --remote --merge V2rayNG/devicekit
+```
+
 Example layout:
 
 - `v2rayNG/V2rayNG/devicekit` (submodule)
