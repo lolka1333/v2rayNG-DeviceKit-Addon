@@ -1,6 +1,6 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    id("com.android.library") version "9.0.0"
+    id("org.jetbrains.kotlin.android") version "2.3.0"
 }
 
 android {
@@ -24,6 +24,6 @@ android {
 }
 
 dependencies {
-    implementation(libs.mmkv.static)
-    implementation(libs.preference.ktx)
+    implementation("com.tencent:mmkv-static:1.3.16")
+    implementation("androidx.preference:preference-ktx:1.2.1")
 }
