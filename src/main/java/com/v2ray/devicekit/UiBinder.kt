@@ -74,6 +74,7 @@ object UiBinder {
 
     private fun updateUaPresetSummary(pref: ListPreference?, value: String?) {
         if (pref == null) return
+        if (pref.summaryProvider != null) return
         val valueStr = value?.toString().orEmpty()
         val idx = pref.findIndexOfValue(valueStr)
         pref.summary = if (idx >= 0) pref.entries[idx] else valueStr
@@ -122,7 +123,9 @@ object UiBinder {
         if (pref == null || value.isBlank()) return
         if (pref.text.isNullOrBlank()) {
             pref.text = value
-            pref.summary = value
+            if (pref.summaryProvider == null) {
+                pref.summary = value
+            }
         }
     }
 
@@ -132,6 +135,8 @@ object UiBinder {
             pref.value = value
         }
         val idx = pref.findIndexOfValue(pref.value)
-        pref.summary = if (idx >= 0) pref.entries[idx] else pref.value
+        if (pref.summaryProvider == null) {
+            pref.summary = if (idx >= 0) pref.entries[idx] else pref.value
+        }
     }
 }
