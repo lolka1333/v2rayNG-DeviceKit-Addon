@@ -1,6 +1,6 @@
 # v2rayNG-DeviceKit-Addon
 
-Android library module (`com.v2ray.devicekit`) used by v2rayNG.
+Android library module (`com.v2ray.devicekit`)
 
 ## Features
 
