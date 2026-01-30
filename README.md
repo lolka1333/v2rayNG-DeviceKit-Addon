@@ -9,7 +9,7 @@ Android library module (`com.v2ray.devicekit`)
 
 ## Used by
 
-- Custom v2rayNG fork (this addon is integrated here): https://github.com/lolka1333/v2rayNG
+- Custom v2rayNG fork (this addon is integrated here): [`lolka1333/v2rayNG`](https://github.com/lolka1333/v2rayNG)
 
 ## What this repo is
 
